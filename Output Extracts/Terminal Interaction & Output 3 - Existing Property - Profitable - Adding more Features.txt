@@ -1,0 +1,86 @@
+PS C:\Users\catar\Documents\Code First Girls Degree\Assignment 4 Docs> & C:/Users/catar/AppData/Local/Programs/Python/Python312/python.exe "c:/Users/catar/Documents/Code First Girls Degree/Assignment 4 Docs/Property_Portfolio_Forecaster_main.py"
+
+######  Welcome to the Property Portfolio & Forecaster!  ######
+
+The Application where you can forecast the return on investment of renovations before you agree to them.
+
+Would you like to run our Forecaster, or amend a feature cost of a stored property? (Forecast/Amend): Forecast
+
+Would you like to run a forecast on an existing property in our Portfolio or a new Property?
+New/Existing: Existing
+
+Property ID     Postcode     Bedroom #     Current Evaluation     Evaluation After Renovations     Purchase Date
+1               SW1A1AA      2             292886.40              292886.40                        2005-11-19
+2               B11BB        1             174596.22              208641.22                        2008-02-22
+3               EH11YZ       3             365963.50              365963.50                        2013-01-16
+4               M11AE        2             237892.06              237892.06                        1998-06-05
+5               L11AA        5             605717.21              605717.21                        2001-03-26
+6               G11RX        2             266178.67              266178.67                        1991-10-10
+7               CF101DD      3             468518.78              468518.78                        1992-06-07
+8               AB101XG      3             328245.55              328245.55                        2019-04-28
+9               BT11AA       1             156299.52              175679.52                        2020-04-02
+10              LE11AA       2             296239.10              296239.10                        1982-01-17
+11              S11AA        2             230577.42              230577.42                        2019-08-13
+12              LS11UR       3             322673.89              322673.89                        2022-09-25
+13              NE11AD       4             557566.72              557566.72                        2002-12-19
+14              BH92DH       1             167798.33              196145.60                        2019-02-15
+
+Please enter the Property ID for the property you wish to use: 14
+
+
+Please see the below existing renovations on record - adding a renovation already in place might skew the Evaluation price.
+You may still add a renovation that is already in place, to account for extensions and room conversions.
+
+Renovation ID   Property ID   Feature                       Quote            Current Evaluation   Evaluation After Renovation   Date Feature Added
+1               14            New Bathroom                  800.0            164277.60            173640.60                     2024-10-14
+2               14            New boiler                    600.0            173640.60            177746.60                     2024-10-14
+3               14            New Kitchen                   1500.0           177746.60            196145.60                     2024-10-14
+
+
+Which renovation feature would you like to use in the calculation?
+Please see the available list on our database, along with their corresponding potential Return on Investment as a Percentage
+
+Feature Name                     Percentage
+1.Additional Double Bedroom          10.0%
+2.Basement Conversion                 7.0%
+3.Central Heating                     6.5%
+4.Garage or Off-Road Parking          9.5%
+5.Garden Redesign                     1.4%
+6.Glazed Windows                      8.5%
+7.Loft Conversion                    10.8%
+8.New Bathroom                        5.7%
+9.New boiler                          2.5%
+10.New Conservatory                   6.0%
+11.New Kitchen                       11.2%
+12.New Roof                           3.1%
+
+Please choose the desired renovation feature using their numeric reference: 5
+
+Please confirm how much you are planning to spend on this feature: 150
+Would you like to add more features? (Y/N): N
+
+
+#######################################################################
+
+Your Final Property Evaluation Forecast is: 198891.6
+The above estimation is on the basis of adding the following features: Garden Redesign
+
+The Return on investment is as follows :
+
+- Added Value Percentage solely due to Inflation: 28.62%
+- Added Value Percentage due to New Features (may not match feature catalogue due to roundings): 1.38%
+- True Added Value Percentage due to New Features but Accounting for Cost: 1.31%
+
+Would you like to store your renovations list and price increase forecast in our database for future use? (Y/N): Y
+
+
+Renovation ID   Property ID   Feature                       Quote            Current Evaluation   Evaluation After Renovation   Date Feature Added
+1               14            New Bathroom                  800.0            164277.60            173640.60                     2024-10-14
+2               14            New boiler                    600.0            173640.60            177746.60                     2024-10-14
+3               14            New Kitchen                   1500.0           177746.60            196145.60                     2024-10-14
+9               14            Garden Redesign               150.0            196145.60            198891.60                     2024-10-14
+
+Property ID     Postcode     Bedroom #     Current Evaluation     Evaluation After Renovations     Purchase Date
+14              BH92DH       1             167798.33              198891.60                        2019-02-15
+
+Renovation details stored. Have a good day, and see you soon!

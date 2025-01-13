@@ -1,0 +1,95 @@
+PS C:\Users\catar\Documents\Code First Girls Degree\Assignment 4 Docs> & C:/Users/catar/AppData/Local/Programs/Python/Python312/python.exe "c:/Users/catar/Documents/Code First Girls Degree/Assignment 4 Docs/Property_Portfolio_Forecaster_main.py"
+
+######  Welcome to the Property Portfolio & Forecaster!  ######
+
+The Application where you can forecast the return on investment of renovations before you agree to them.
+
+Would you like to run our Forecaster, or amend a feature cost of a stored property? (Forecast/Amend): Amend
+
+Renovation ID   Property ID   Feature                       Quote            Current Evaluation   Evaluation After Renovation   Date Feature Added
+7               2             Additional Double Bedroom     21000.0          174596.22            192055.22                     2024-10-14
+8               2             Garage or Off-Road Parking    8500.0           192055.22            208641.22                     2024-10-14
+4               9             Glazed Windows                300.0            156299.52            169584.52                     2024-10-14
+5               9             New boiler                    450.0            169584.52            173491.52                     2024-10-14
+6               9             Garden Redesign               100.0            173491.52            175679.52                     2024-10-14
+1               14            New Bathroom                  800.0            164277.60            173640.60                     2024-10-14
+2               14            New boiler                    65.0             173640.60            177746.60                     2024-10-14
+3               14            New Kitchen                   1120.0           177746.60            196145.60                     2024-10-14
+9               14            Garden Redesign               150.0            196145.60            198891.60                     2024-10-14
+
+Please select which Property to amend by Property ID: 2
+
+
+Renovation ID   Property ID   Feature                       Quote            Current Evaluation   Evaluation After Renovation   Date Feature Added
+7               2             Additional Double Bedroom     21000.0          174596.22            192055.22                     2024-10-14
+8               2             Garage or Off-Road Parking    8500.0           192055.22            208641.22                     2024-10-14
+
+Please select which quote to amend by Renovation ID: 8
+
+Please input the correct price: 9200
+
+Feature Price Amended Successfully!
+
+Renovation ID   Property ID   Feature                       Quote            Current Evaluation   Evaluation After Renovation   Date Feature Added
+7               2             Additional Double Bedroom     21000.0          174596.22            192055.22                     2024-10-14
+8               2             Garage or Off-Road Parking    9200.0           192055.22            208641.22                     2024-10-14
+(100.0, 7.95, 3.54)
+
+#######################################################################
+
+The price was successfully amended for the following feature: Garage or Off-Road Parking
+
+The Return on investment is as follows :
+
+- Added Value Percentage due to New Features (may not match feature catalogue due to roundings): 7.95%
+- True Added Value Percentage due to New Features but Accounting for New Cost: 3.54%
+
+Would you like to amend the price of more features for this property? (Y/N): N
+
+Would you like to amend the feature cost of a different stored property? (Y/N): Y
+
+Renovation ID   Property ID   Feature                       Quote            Current Evaluation   Evaluation After Renovation   Date Feature Added
+7               2             Additional Double Bedroom     21000.0          174596.22            192055.22                     2024-10-14
+8               2             Garage or Off-Road Parking    9200.0           192055.22            208641.22                     2024-10-14
+4               9             Glazed Windows                300.0            156299.52            169584.52                     2024-10-14
+5               9             New boiler                    450.0            169584.52            173491.52                     2024-10-14
+6               9             Garden Redesign               100.0            173491.52            175679.52                     2024-10-14
+1               14            New Bathroom                  800.0            164277.60            173640.60                     2024-10-14
+2               14            New boiler                    65.0             173640.60            177746.60                     2024-10-14
+3               14            New Kitchen                   1120.0           177746.60            196145.60                     2024-10-14
+9               14            Garden Redesign               150.0            196145.60            198891.60                     2024-10-14
+
+Please select which Property to amend by Property ID: 9
+
+
+Renovation ID   Property ID   Feature                       Quote            Current Evaluation   Evaluation After Renovation   Date Feature Added
+4               9             Glazed Windows                300.0            156299.52            169584.52                     2024-10-14
+5               9             New boiler                    450.0            169584.52            173491.52                     2024-10-14
+6               9             Garden Redesign               100.0            173491.52            175679.52                     2024-10-14
+
+Please select which quote to amend by Renovation ID: 4
+
+Please input the correct price: 350
+
+Feature Price Amended Successfully!
+
+Renovation ID   Property ID   Feature                       Quote            Current Evaluation   Evaluation After Renovation   Date Feature Added
+4               9             Glazed Windows                350.0            156299.52            169584.52                     2024-10-14
+5               9             New boiler                    450.0            169584.52            173491.52                     2024-10-14
+6               9             Garden Redesign               100.0            173491.52            175679.52                     2024-10-14
+(100.0, 7.83, 7.63)
+
+#######################################################################
+
+The price was successfully amended for the following feature: Glazed Windows
+
+The Return on investment is as follows :
+
+- Added Value Percentage due to New Features (may not match feature catalogue due to roundings): 7.83%
+- True Added Value Percentage due to New Features but Accounting for New Cost: 7.63%
+
+Would you like to amend the price of more features for this property? (Y/N): N
+
+Would you like to amend the feature cost of a different stored property? (Y/N): N
+
+Thank you for updating our details. Have a good day, and see you soon!

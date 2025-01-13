@@ -1,0 +1,100 @@
+CREATE DATABASE property_portfolio;
+
+USE property_portfolio;
+
+-- CREATE TABLE THAT STORES PROPERTIES, THEIR ORIGINAL PRICE, AND THEIR CURRENT PRICE (ONLY INFLATION ACCOUNTED FOR)
+
+CREATE TABLE property_list
+	(ID INT AUTO_INCREMENT PRIMARY KEY, 
+	postcode VARCHAR(7) NOT NULL,
+	number_bedrooms INT NOT NULL,
+	purchase_price FLOAT NOT NULL,
+    purchase_date DATE NOT NULL,
+    current_evaluation DECIMAL(12, 2));
+
+-- CREATE TABLE THAT STORES THE AVAILABLE FEATURES IN THE FORECASTER, AND THEIR RESPECTIVE PERCENTAGES
+
+CREATE TABLE renovation_features
+	(feature VARCHAR(255) NOT NULL,
+    added_value_percentage FLOAT NOT NULL,
+	PRIMARY KEY (feature)); 
+
+-- CREATE A TABLE THAT TRACKS THE INPUT RENOVATIONS, CURRENT PROPERTY PRICE POST RENOVATIONS
+
+CREATE TABLE renovations_tracker
+	(renovation_id INT AUTO_INCREMENT PRIMARY KEY,
+    property_id INT NOT NULL,
+    feature VARCHAR(255) NOT NULL,
+    price_paid_for_feature FLOAT NOT NULL,
+    current_evaluation DECIMAL(12, 2) NOT NULL,
+    feature_added_date DATE NOT NULL,
+    property_value_after_renovation DECIMAL(12, 2),
+    FOREIGN KEY (property_id) REFERENCES property_list(ID),
+    FOREIGN KEY (feature) REFERENCES renovation_features(feature));
+
+-- THE BELOW IS A TRIGGER THAT AUTOMATICALLY CALCULATES INFLATION ON THE PROPERTY PURCHASE PRICE.
+-- FOR THIS EXAMPLE I AM USING A FIXED 3.25% AS IT IS AN AVERAGE OVER THE LAST 30 YEARS IN THE UK
+-- IF I WERE TO CHANGE THIS EXAMPLE INTO MORE OF A REAL LIFE APPLICATION, I WOULD ALSO INCLUDE A TABLE THAT STORES INFLATION VALUES YEAR ON YEAR
+-- VIA AN API, AND INSTEAD OF CALCULATING BASED ON A FIXED INTEREST I WOULD USE A LIST OF EACH YEAR BETWEEN NOW AND PURCHASE PRICE,
+-- AND CALCULATE THE RESPECTIVE PROPERTY PRICE INCREASE YEAR ON YEAR
+
+DELIMITER //
+
+CREATE TRIGGER before_insert_property_price_inflation
+BEFORE INSERT ON property_list
+FOR EACH ROW
+BEGIN
+	-- DECLARE MY VARIABLES
+    DECLARE inflation_rate DECIMAL(5, 2) DEFAULT 3.25;
+    DECLARE years_passed DECIMAL(10, 6);
+
+    -- CALCULATE THE EXACT DIFFERENCE IN YEARS FROM TODAY'S DATE TO THE DATE OF PURCHASE
+    SET years_passed = TIMESTAMPDIFF(YEAR, NEW.purchase_date, CURRENT_DATE) + (DAYOFYEAR(CURRENT_DATE) - DAYOFYEAR(NEW.purchase_date)) / 365;
+
+    -- CALCULATE THE CURRENT EVALUATION BASED ON PURCHASE PRICE AND INFLATION RATE
+    SET NEW.current_evaluation = ROUND(NEW.purchase_price * POWER(1 + inflation_rate / 100, years_passed), 2);
+END//
+
+DELIMITER ;
+
+-- INSERT VALUES INTO PROPERTY LIST TABLE TO START WITH
+INSERT INTO property_list
+	(ID, 
+    postcode,
+	number_bedrooms,
+	purchase_price,
+    purchase_date)
+VALUES
+	(1, 'SW1A1AA', 2, 165200, '2005-11-19'),
+	(2, 'B11BB', 1, 102530, '2008-02-22'),
+	(3, 'EH11YZ', 3, 251360, '2013-01-16'),
+	(4, 'M11AE', 2, 102380, '1998-06-05'),
+	(5, 'L11AA', 5, 285150, '2001-03-26'),
+	(6, 'G11RX', 2, 92600, '1991-10-10'),
+	(7, 'CF101DD', 3, 166470, '1992-06-07'),
+	(8, 'AB101XG', 3, 275600, '2019-04-28'),
+	(9, 'BT11AA' , 1, 135200, '2020-04-02'),
+	(10, 'LE11AA', 2, 75500, '1982-01-17'),
+	(11, 'S11AA', 2, 195420, '2019-08-13'),
+	(12, 'LS11UR', 3, 302150, '2022-09-25'),
+	(13, 'NE11AD', 4, 286470, '2002-12-19');
+
+
+-- INSERT VALUES INTO THE FEATURES LIST. THE PERCENTAGES FOR EACH FEATURE ARE AN AVERAGE SOURCED FROM THE INTERNET.
+INSERT INTO renovation_features
+	(feature, 
+    added_value_percentage)
+VALUES
+	('New Kitchen', 11.2),
+    ('New Bathroom', 5.7),
+    ('New Conservatory', 6),
+    ('New boiler', 2.5),
+    ('Glazed Windows', 8.5),
+    ('Basement Conversion', 7),
+    ('Loft Conversion', 10.8),
+    ('Garden Redesign', 1.4),
+    ('Garage or Off-Road Parking', 9.5),
+    ('New Roof', 3.1),
+    ('Additional Double Bedroom', 10),
+    ('Central Heating', 6.5);
+    
