@@ -130,10 +130,6 @@ Screenshots of successful test runs are available in the Testing Snippet folder.
 - **Data Visualization:** Add graphical representations of ROI statistics and property trends.
 - **Enhanced Error Handling:** Improve error messages and handling for edge cases.
 
-## License
-
-This project is open-source and available under the MIT License.
-
 ## Contact
 
 For questions, feedback, or collaboration opportunities, please contact:
